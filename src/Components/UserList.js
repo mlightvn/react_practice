@@ -47,7 +47,7 @@ class UserList extends Component {
                 <th></th>
               </tr>
             </thead>
-            <UserListBody userList={this.state.userList} addUser={this.addUser} removeUser={this.removeUser} />
+            <UserListBody userList={this.state.userList} addUser={this.addUser} editUser={this.editUser} removeUser={this.removeUser} />
           </table>
         </div>
         <div className="card-footer">
@@ -65,10 +65,24 @@ class UserList extends Component {
     this.setState({userList})
   }
 
+  // editUser = user => {
+  //   const { userList } = this.state
+
+  //   userList.data = userList.data.filter((iUser, i) => {
+  //     if (iUser.id === user.id){
+  //       userList[i].name = user.name
+  //       userList[i].job = user.job
+  //       return true
+  //     }
+  //     return false
+  //   })
+
+  // }
+
   removeUser = index => {
     const { userList } = this.state
 
-    userList.data = userList.data.filter((character, i) => {
+    userList.data = userList.data.filter((iUser, i) => {
       return i !== index
     })
 

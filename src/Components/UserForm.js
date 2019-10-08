@@ -22,11 +22,9 @@ class UserForm extends Component {
   }
 
   editUser = user => {
-    const { name, value } = user
+    // const { name, value } = user
 console.log(user);
-    this.setState({
-      [name]:value
-    })
+    this.setState(user)
   }
 
   submitForm = () => {

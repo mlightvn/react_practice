@@ -12,7 +12,7 @@ const UserListBody = props => {
         <td>{row.name}</td>
         <td>{row.job}</td>
         <td>
-          <button onClick={() => props.editUser(row)} className="btn btn-sm btn-primary"><i className="fas fa-pencil-alt"></i></button>
+          <button onClick={() => props.editUser(row)} className="btn btn-sm btn-primary disabled"><i className="fas fa-pencil-alt"></i></button>
           &nbsp;
           <button onClick={() => props.removeUser(index)} className="btn btn-sm btn-danger"><i className="fas fa-trash"></i></button>
         </td>
