@@ -14,15 +14,25 @@ class UserForm extends Component {
   }
 
   handleChange = event => {
-    const { id, name, value } = event.target
+    const { name, value } = event.target
 
     this.setState({
-      [id]: name, value,
+      [name]:value
+    })
+  }
+
+  editUser = user => {
+    const { name, value } = user
+console.log(user);
+    this.setState({
+      [name]:value
     })
   }
 
   submitForm = () => {
-    this.props.addUser(this.state)
+    const { userList } = this.props
+    userList.lastIndex++
+    this.props.addUser({...this.state, id: userList.lastIndex})
     this.setState(this.initialState)
   }
 
@@ -31,30 +41,30 @@ class UserForm extends Component {
 
     return (
       <form>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="input-group mb-3 input-group-sm">
-              <div class="input-group-prepend">
-                 <span class="input-group-text">ID</span>
+        <div className="row">
+          <div className="col-md-6">
+            <div className="input-group mb-3 input-group-sm">
+              <div className="input-group-prepend">
+                 <span className="input-group-text">ID</span>
               </div>
-              <span class="">{id}</span>
-              <div class="input-group-prepend">
-                 <span class="input-group-text">Name</span>
+              <span className="">{id}</span>
+              <div className="input-group-prepend">
+                 <span className="input-group-text">Name</span>
               </div>
-              <input type="text" class="form-control"
+              <input type="text" className="form-control"
                 name="name"
                 value={name}
                 onChange={this.handleChange}
               />
-              <div class="input-group-prepend">
-                 <span class="input-group-text">Job</span>
+              <div className="input-group-prepend">
+                 <span className="input-group-text">Job</span>
               </div>
-              <input type="text" class="form-control"
+              <input type="text" className="form-control"
                 name="job"
                 value={job}
                 onChange={this.handleChange}
               />
-              <div class="input-group-append">
+              <div className="input-group-append">
                 <button type="button" onClick={this.submitForm} className="btn btn-primary"><i className="fas fa-plus"></i></button>
               </div>
             </div>

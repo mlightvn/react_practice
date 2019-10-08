@@ -4,28 +4,32 @@ import UserForm from "./UserForm";
 
 class UserList extends Component {
   state = {
-    userList: [
-      {
-        id: 1,
-        name: 'Nam 1',
-        job: 'Janitor',
-      },
-      {
-        id: 2,
-        name: 'Nam 2',
-        job: 'Bouncer',
-      },
-      {
-        id: 3,
-        name: 'Nam 3',
-        job: 'Aspring actress',
-      },
-      {
-        id: 4,
-        name: 'Nam 4',
-        job: 'Bartender',
-      },
-    ],
+    userList: {
+      data: [
+        {
+          id: 1,
+          name: 'Nam 1',
+          job: 'Janitor',
+        },
+        {
+          id: 2,
+          name: 'Nam 2',
+          job: 'Bouncer',
+        },
+        {
+          id: 3,
+          name: 'Nam 3',
+          job: 'Aspring actress',
+        },
+        {
+          id: 4,
+          name: 'Nam 4',
+          job: 'Bartender',
+        },
+      ],
+      lastIndex: 4,
+      length: 4,
+    },
   }
 
   render() {
@@ -43,36 +47,34 @@ class UserList extends Component {
                 <th></th>
               </tr>
             </thead>
-            <UserListBody userList={this.state.userList} addUser={this.addUser} editUser={this.editUser} removeUser={this.removeUser} />
+            <UserListBody userList={this.state.userList} addUser={this.addUser} removeUser={this.removeUser} />
           </table>
         </div>
         <div className="card-footer">
-            <UserForm addUser={this.addUser} />
+            <UserForm userList={this.state.userList} addUser={this.addUser} />
         </div>
       </div>
     )
   }
 
   addUser = user => {
-    this.setState({ userList: [...this.state.userList, user] })
-  }
-
-  editUser = index => {
-    // this.setState({
-    //   userList: userList.filter((character, i) => {
-    //     return i !== index
-    //   }),
-    // })
+    const { userList } = this.state
+    userList.lastIndex++
+    userList.data = [...userList.data, user]
+    userList.length++
+    this.setState({userList})
   }
 
   removeUser = index => {
     const { userList } = this.state
 
-    this.setState({
-      userList: userList.filter((character, i) => {
-        return i !== index
-      }),
+    userList.data = userList.data.filter((character, i) => {
+      return i !== index
     })
+
+    userList.length--
+
+    this.setState({ userList})
   }
 
 }
