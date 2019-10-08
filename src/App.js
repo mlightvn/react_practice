@@ -41,7 +41,7 @@ class App extends Component {
           </nav>
         </header>
         <main className="App container">
-          <UserList userList={userList} removeUser={this.removeUser} />
+          <UserList userList={userList} addUser={this.addUser} editUser={this.editUser} removeUser={this.removeUser} />
         </main>
         <footer>
           <div className="container">
@@ -51,6 +51,26 @@ class App extends Component {
       </div>
     );
 
+  }
+
+  addUser = index => {
+    const { userList } = this.state
+
+    this.setState({
+      userList: userList.filter((character, i) => {
+        return i !== index
+      }),
+    })
+  }
+
+  editUser = index => {
+    const { userList } = this.state
+
+    this.setState({
+      userList: userList.filter((character, i) => {
+        return i !== index
+      }),
+    })
   }
 
   removeUser = index => {
