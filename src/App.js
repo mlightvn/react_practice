@@ -9,30 +9,8 @@ import UserList from "./Components/UserList";
 // https://www.taniarascia.com/getting-started-with-react/
 
 class App extends Component {
-  state = {
-    userList: [
-      {
-        name: 'Nam 1',
-        job: 'Janitor',
-      },
-      {
-        name: 'Nam 2',
-        job: 'Bouncer',
-      },
-      {
-        name: 'Nam 3',
-        job: 'Aspring actress',
-      },
-      {
-        name: 'Nam 4',
-        job: 'Bartender',
-      },
-    ],
-  }
 
   render(){
-    const { userList } = this.state
-
     return (
       <div>
         <header>
@@ -41,7 +19,7 @@ class App extends Component {
           </nav>
         </header>
         <main className="App container">
-          <UserList userList={userList} addUser={this.addUser} editUser={this.editUser} removeUser={this.removeUser} />
+          <UserList />
         </main>
         <footer>
           <div className="container">
@@ -51,36 +29,6 @@ class App extends Component {
       </div>
     );
 
-  }
-
-  addUser = index => {
-    const { userList } = this.state
-
-    this.setState({
-      userList: userList.filter((character, i) => {
-        return i !== index
-      }),
-    })
-  }
-
-  editUser = index => {
-    const { userList } = this.state
-
-    this.setState({
-      userList: userList.filter((character, i) => {
-        return i !== index
-      }),
-    })
-  }
-
-  removeUser = index => {
-    const { userList } = this.state
-
-    this.setState({
-      userList: userList.filter((character, i) => {
-        return i !== index
-      }),
-    })
   }
 
 }
