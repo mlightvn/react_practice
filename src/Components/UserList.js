@@ -28,7 +28,6 @@ class UserList extends Component {
         },
       ],
       lastIndex: 4,
-      length: 4,
     },
   }
 
