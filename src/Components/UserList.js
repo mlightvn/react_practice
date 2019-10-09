@@ -60,7 +60,6 @@ class UserList extends Component {
     const { userList } = this.state
     userList.lastIndex++
     userList.data = [...userList.data, user]
-    userList.length++
     this.setState({userList})
   }
 
@@ -84,8 +83,6 @@ class UserList extends Component {
     userList.data = userList.data.filter((iUser, i) => {
       return i !== index
     })
-
-    userList.length--
 
     this.setState({ userList})
   }
