@@ -15,7 +15,7 @@ class App extends Component {
       <div>
         <header>
           <nav className="nav">
-            <h1 className="container"><center>MIKO</center></h1>
+            <h1 className="container"><center>TEMPLATE</center></h1>
           </nav>
         </header>
         <main className="App container">

@@ -5,7 +5,7 @@ class UserForm extends Component {
     super(props)
 
     this.initialState = {
-      id: '',
+      id: null,
       name: '',
       job: '',
     }
@@ -21,31 +21,30 @@ class UserForm extends Component {
     })
   }
 
-  editUser = user => {
-    // const { name, value } = user
-console.log(user);
-    this.setState(user)
-  }
+//   editUser = user => {
+//     // const { name, value } = user
+// console.log(user);
+//     this.setState(user)
+//   }
 
   submitForm = () => {
-    const { userList } = this.props
-    userList.lastIndex++
-    this.props.addUser({...this.state, id: userList.lastIndex})
+    this.props.addUser(this.state)
     this.setState(this.initialState)
   }
 
   render() {
-    const { id, name, job } = this.state;
+    // const lastUser = this.props.userList.data[this.props.userList.data.length - 1]
+    var { name, job } = this.state;
+
+    // if(id === null){
+    //   id = lastUser.id
+    // }
 
     return (
       <form>
         <div className="row">
           <div className="col-md-6">
             <div className="input-group mb-3 input-group-sm">
-              <div className="input-group-prepend">
-                 <span className="input-group-text">ID</span>
-              </div>
-              <span className="">{id}</span>
               <div className="input-group-prepend">
                  <span className="input-group-text">Name</span>
               </div>

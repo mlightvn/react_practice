@@ -26,8 +26,43 @@ class UserList extends Component {
           name: 'Nam 4',
           job: 'Bartender',
         },
+        {
+          id: 5,
+          name: 'Nam 5',
+          job: 'Bartender',
+        },
+        {
+          id: 6,
+          name: 'Nam 6',
+          job: 'Bartender',
+        },
+        {
+          id: 7,
+          name: 'Nam 7',
+          job: 'Bartender',
+        },
+        {
+          id: 8,
+          name: 'Nam 8',
+          job: 'Bartender',
+        },
+        {
+          id: 9,
+          name: 'Nam 9',
+          job: 'Bartender',
+        },
+        {
+          id: 10,
+          name: 'Nam 10',
+          job: 'Bartender',
+        },
+        {
+          id: 11,
+          name: 'Nam 11',
+          job: 'Bartender',
+        },
       ],
-      lastIndex: 4,
+      lastIndex: 11,
     },
   }
 
@@ -59,6 +94,7 @@ class UserList extends Component {
   addUser = user => {
     const { userList } = this.state
     userList.lastIndex++
+    user.id = userList.lastIndex
     userList.data = [...userList.data, user]
     this.setState({userList})
   }
