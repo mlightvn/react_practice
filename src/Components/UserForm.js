@@ -5,12 +5,13 @@ class UserForm extends Component {
     super(props)
 
     this.initialState = {
-      id: null,
+      id: '',
       name: '',
       job: '',
     }
 
     this.state = this.initialState
+    this.editUser = props.editUser.bind(this)
   }
 
   handleChange = event => {
@@ -28,13 +29,13 @@ class UserForm extends Component {
 //   }
 
   submitForm = () => {
-    this.props.addUser(this.state)
+    this.props.addEditUser(this.state)
     this.setState(this.initialState)
   }
 
   render() {
     // const lastUser = this.props.userList.data[this.props.userList.data.length - 1]
-    var { name, job } = this.state;
+    var { id, name, job } = this.state;
 
     // if(id === null){
     //   id = lastUser.id
@@ -42,6 +43,8 @@ class UserForm extends Component {
 
     return (
       <form>
+        <input type="hidden" name="id" value={id} />
+
         <div className="row">
           <div className="col-md-6">
             <div className="input-group mb-3 input-group-sm">

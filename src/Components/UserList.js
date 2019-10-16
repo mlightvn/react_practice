@@ -72,7 +72,7 @@ class UserList extends Component {
       <div className="card">
         <div className="card-header">User List</div>
         <div className="card-body">
-          <table className="table table-hover table-striped">
+          <table className="table table-sm table-hover table-striped">
             <thead>
               <tr>
                 <th>#</th>
@@ -85,7 +85,7 @@ class UserList extends Component {
           </table>
         </div>
         <div className="card-footer">
-            <UserForm userList={this.state.userList} addUser={this.addUser} />
+            <UserForm userList={this.state.userList} addEditUser={this.addEditUser} editUser={this.editUser} />
         </div>
       </div>
     )
@@ -99,19 +99,27 @@ class UserList extends Component {
     this.setState({userList})
   }
 
-  // editUser = user => {
-  //   const { userList } = this.state
+  addEditUser = user => {
+    const { userList } = this.state
 
-  //   userList.data = userList.data.filter((iUser, i) => {
-  //     if (iUser.id === user.id){
-  //       userList[i].name = user.name
-  //       userList[i].job = user.job
-  //       return true
-  //     }
-  //     return false
-  //   })
+    if(user.id){
+      userList.data = userList.data.filter((iUser, i) => {
+        if (iUser.id === user.id){
+          userList[i].name = user.name
+          userList[i].job = user.job
+          return true
+        }
+        return false
+      })
+    }else{
+      this.addUser(user)
+    }
 
-  // }
+  }
+
+  editUser = user => {
+    this.setState(user)
+  }
 
   removeUser = index => {
     const { userList } = this.state
