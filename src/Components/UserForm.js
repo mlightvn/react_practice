@@ -1,26 +1,48 @@
 import React, { Component } from 'react'
+import { userLoad, userEdit } from '../Services/UserAction';
 
 class UserForm extends Component {
   constructor(props) {
     super(props)
 
     this.initialState = {
-      id: '',
-      name: '',
-      job: '',
+      user : {
+        id: '',
+        name: '',
+        job: '',
+      }
     }
 
     this.state = this.initialState
     this.editUser = props.editUser.bind(this)
+    // this.addEditUser = props.addEditUser.bind(this)
+
   }
+
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps.newUser !== this.props.newUser) {
+  //     this.add(nextProps.newUser);
+  //   }
+
+  //   // if (nextProps.userToRemove !== this.props.userToRemove) {
+  //   //   this.remove(nextProps.userToRemove);
+  //   // }
+  // }
 
   handleChange = event => {
     const { name, value } = event.target
+    let user = this.state.user
+    user[name] = value
 
-    this.setState({
-      [name]:value
-    })
+    this.setState({user})
   }
+
+  // add = user => {
+  //   // const { user } = this.props;
+
+  //   // updateCart(cartusers);
+  //   // this.openFloatCart();
+  // };
 
 //   editUser = user => {
 //     // const { name, value } = user
@@ -29,22 +51,18 @@ class UserForm extends Component {
 //   }
 
   submitForm = () => {
-    this.props.addEditUser(this.state)
-    this.setState(this.initialState)
+    this.props.addEditUser(this.state.user)
+    let {user} = this.initialState
+    this.setState({user})
+// console.log(this.state)
   }
 
   render() {
-    // const lastUser = this.props.userList.data[this.props.userList.data.length - 1]
-    var { id, name, job } = this.state;
-// console.log(this.state);
-
-    // if(id === null){
-    //   id = lastUser.id
-    // }
+    let { user } = this.state;
 
     return (
       <form>
-        <input type="hidden" name="id" value={id} />
+        <input type="hidden" name="id" value={user.id} />
 
         <div className="row">
           <div className="col-md-6">
@@ -54,7 +72,7 @@ class UserForm extends Component {
               </div>
               <input type="text" className="form-control"
                 name="name"
-                value={name}
+                value={user.name}
                 onChange={this.handleChange}
               />
               <div className="input-group-prepend">
@@ -62,7 +80,7 @@ class UserForm extends Component {
               </div>
               <input type="text" className="form-control"
                 name="job"
-                value={job}
+                value={user.job}
                 onChange={this.handleChange}
               />
               <div className="input-group-append">
@@ -77,5 +95,18 @@ class UserForm extends Component {
   }
 
 }
+
+
+// const mapStateToProps = state => ({
+//   cartusers: state.cart.users,
+//   newuser: state.cart.userToAdd,
+//   userToRemove: state.cart.userToRemove,
+//   cartTotal: state.total.data
+// });
+
+// export default connect(
+//   mapStateToProps,
+//   { userLoad, userFormLoad }
+// )(UserForm);
 
 export default UserForm

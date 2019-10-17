@@ -102,16 +102,17 @@ class UserList extends Component {
     user.id = userList.lastIndex
     userList.data = [...userList.data, user]
     this.setState({userList})
+console.log(userList)
   }
 
   addEditUser = user => {
     const { userList } = this.state
 
-    if(user.id){
+    if(!!user.id){
       userList.data = userList.data.filter((iUser, i) => {
         if (iUser.id === user.id){
-          userList[i].name = user.name
-          userList[i].job = user.job
+          iUser.name = user.name
+          iUser.job = user.job
           return true
         }
         return false
