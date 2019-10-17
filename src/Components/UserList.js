@@ -5,6 +5,11 @@ import UserForm from "./UserForm";
 class UserList extends Component {
   state = {
     userList: {
+      userEdit: {
+        id: '',
+        name: '',
+        job: '',
+      },
       data: [
         {
           id: 1,
@@ -118,7 +123,10 @@ class UserList extends Component {
   }
 
   editUser = user => {
-    this.setState(user)
+    let userList = this.state.userList
+    userList.userEdit = user
+    this.setState(userList)
+    console.log(this.state);
   }
 
   removeUser = index => {

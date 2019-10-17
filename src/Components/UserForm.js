@@ -36,6 +36,7 @@ class UserForm extends Component {
   render() {
     // const lastUser = this.props.userList.data[this.props.userList.data.length - 1]
     var { id, name, job } = this.state;
+// console.log(this.state);
 
     // if(id === null){
     //   id = lastUser.id
