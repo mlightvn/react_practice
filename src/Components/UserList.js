@@ -102,13 +102,14 @@ class UserList extends Component {
     user.id = userList.lastIndex
     userList.data = [...userList.data, user]
     this.setState({userList})
-console.log(userList)
+// console.log(userList)
   }
 
   addEditUser = user => {
     const { userList } = this.state
 
-    if(!!user.id){
+// console.log("user.id: " + user.id);
+    if(user.id){
       userList.data = userList.data.filter((iUser, i) => {
         if (iUser.id === user.id){
           iUser.name = user.name

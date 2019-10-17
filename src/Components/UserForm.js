@@ -13,7 +13,8 @@ class UserForm extends Component {
       }
     }
 
-    this.state = this.initialState
+    let user = Object.assign({}, this.initialState.user)
+    this.state = {user: user}
     this.editUser = props.editUser.bind(this)
     // this.addEditUser = props.addEditUser.bind(this)
 
@@ -52,7 +53,8 @@ class UserForm extends Component {
 
   submitForm = () => {
     this.props.addEditUser(this.state.user)
-    let {user} = this.initialState
+
+    let user = Object.assign({}, this.initialState.user)
     this.setState({user})
 // console.log(this.state)
   }
