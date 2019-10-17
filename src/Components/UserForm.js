@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-import { userLoad, userEdit } from '../Services/UserAction';
+import { ObjectClone } from '../Services/ObjectClone';
+import { userUpdate } from '../Services/UserAction';
+import { connect } from 'react-redux';
 
 class UserForm extends Component {
   constructor(props) {
@@ -13,8 +15,7 @@ class UserForm extends Component {
       }
     }
 
-    let user = Object.assign({}, this.initialState.user)
-    this.state = {user: user}
+    this.state = ObjectClone(this.initialState)
     this.editUser = props.editUser.bind(this)
     // this.addEditUser = props.addEditUser.bind(this)
 
@@ -54,8 +55,8 @@ class UserForm extends Component {
   submitForm = () => {
     this.props.addEditUser(this.state.user)
 
-    let user = Object.assign({}, this.initialState.user)
-    this.setState({user})
+    let state = ObjectClone(this.initialState)
+    this.setState(state)
 // console.log(this.state)
   }
 
@@ -99,16 +100,13 @@ class UserForm extends Component {
 }
 
 
-// const mapStateToProps = state => ({
-//   cartusers: state.cart.users,
-//   newuser: state.cart.userToAdd,
-//   userToRemove: state.cart.userToRemove,
-//   cartTotal: state.total.data
-// });
+const mapStateToProps = state => ({
+  user: state.user,
+});
 
-// export default connect(
-//   mapStateToProps,
-//   { userLoad, userFormLoad }
-// )(UserForm);
+export default connect(
+  mapStateToProps,
+  { userUpdate }
+)(UserForm);
 
-export default UserForm
+// export default UserForm

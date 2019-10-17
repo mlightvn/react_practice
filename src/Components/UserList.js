@@ -108,7 +108,6 @@ class UserList extends Component {
   addEditUser = user => {
     const { userList } = this.state
 
-// console.log("user.id: " + user.id);
     if(user.id){
       userList.data = userList.data.filter((iUser, i) => {
         if (iUser.id === user.id){
