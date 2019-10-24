@@ -1,5 +1,5 @@
 // import React from 'react';
-import React, { Component } from "react";
+import React, { Component, useState, useRef, useEffect } from 'react';
 // import ReactDOM from 'react-dom';
 // import logo from '{process.env.PUBLIC_URL}/logo192.png';
 import './App.css';
@@ -12,7 +12,7 @@ class App extends Component {
 
   render(){
     return (
-      <div>
+      <>
         <header>
           <nav className="nav">
             <h1 className="container"><center>TEMPLATE</center></h1>
@@ -26,7 +26,7 @@ class App extends Component {
             Author: Nguyen Ngoc Nam
           </div>
         </footer>
-      </div>
+      </>
     );
 
   }
